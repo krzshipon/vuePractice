@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue js tutorial</title>
+    
+</head>
+<body>
+
+    <div id="root">
+        <h1>Skills</h1>
+        <ul>
+            <li v-for="(skill, i) in skills">
+                <p>
+                    {{skill}} <button @click="removeSkill(i)">x</button>
+                </p>
+            </li>
+        </ul>
+        <input type="text" v-model="newSkill">
+        <button v-on:click="addNewSkill">Add Skill</button>
+    </div>
+
+
+
+
+    <!-- importing vue js library -->
+    <script src="vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#root",
+            data: {
+                newSkill: "",
+                skills: ["Html", "Css", "Java", "Php"]
+            },
+            methods: {
+                addNewSkill(e){
+                    alert("Addding...");
+                    this.skills.push(this.newSkill);
+                    this.newSkill='';
+                },
+                removeSkill(i){
+                    alert("removing//..");
+                    this.skills.splice(i,1);                }
+            }
+        });
+    </script>
+    
+</body>
+</html>

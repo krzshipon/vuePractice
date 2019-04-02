@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue js tutorial</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+        li{
+            display: inline;
+        }
+        .active{
+            background: #0B78A0;
+            color: #FFFFFF;
+            padding: 5px;
+
+        }
+    </style>
+</head>
+<body>
+
+    <div id="root">
+        <ul>
+            <li>
+                <a :class="{'active': activeLink == 'link1'}" :href="link1.url" :title="link1.title"> {{link1.text}} </a>
+            </li>
+            <li>
+                    <a :class="{'active': activeLink == 'link2'}" :href="link2.url" :title="link2.title"> {{link2.text}} </a>
+                </li>
+        </ul>
+
+
+        <br><br><br>
+
+        <p v-html="html">
+            {{html}}
+        </p>
+    </div>
+
+
+
+
+    <!-- importing vue js library -->
+    <script src="vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#root",
+            data: {
+                link1: {
+                    text: "Google",
+                    title: "Go to google",
+                    url: "http://google.com"
+                },
+                link2: {
+                    text: "Youtube",
+                    title: "Go to Youtube",
+                    url: "http://Youtube.com"
+                },
+                activeLink: "link1",
+
+                html: '<a href="http://google.com">About me</a>'
+            }
+        });
+    </script>
+    
+</body>
+</html>

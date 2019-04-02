@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- css -->
+    <link rel="stylesheet" href="style.css">
+    <title>KRZ TODO App</title>
+</head>
+<body>
+    <script src="vue.js"></script>
+
+    <!-- main body for vue -->
+
+    <div id="root">
+        <button @click="showLogin = true">login</button>
+
+        <modal v-if="showLogin" @onsave="showLogin = false">
+            <template slot="header">
+                This is modal header
+            </template>
+
+            <template slot="body">
+                    <h2>Enter your name</h2>
+                    <input type="text" name="">
+             </template>
+        </modal>
+
+    </div>
+
+
+
+    <!-- VUE APP SCRIPT -->
+    <script>
+       
+        Vue.component("modal",{
+            template:`
+            <div class="modal">
+				<div class="modalContent">
+					<div class="modalHeader">
+						<slot name="header"></slot>
+					</div>
+					<div class="modalBody">
+						<slot name="body"></slot>
+					</div>
+
+					<div class="modalHeader">
+						<button @click="$emit('onsave')">Save</button>
+						<button>Cancel</button>
+					</div>
+				</div>
+			</div>	
+
+		`,
+            props: ["title","content"],
+            data: function(){
+                return {
+                    show: true
+                }
+            }
+        })
+        var app = new Vue({
+            el: "#root",
+            data: {
+                   showLogin: false
+            }
+            
+                
+
+        });
+    </script>
+
+
+
+
+
+</body>
+</html>

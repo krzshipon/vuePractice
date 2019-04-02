@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue js tutorial</title>
+    
+</head>
+<body>
+
+    <div id="root">
+        <h1>Skills</h1>
+        <ul>
+            <li v-for="(skill, i) in skills" v-if="skill.exp > 3">
+                <p >{{i+1}}.{{skill.name}}  ({{skill.exp}})</p>
+
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+
+    <!-- importing vue js library -->
+    <script src="vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#root",
+            data: {
+                skills: [
+                    {
+                        name: "Html", exp: 5
+                    },
+                    {
+                        name: "CSS", exp: 4
+                    },
+                    {
+                        name: "js", exp: 3
+                    },
+                    {
+                        name: "php", exp: 2
+                    },
+                    {
+                        name: "java", exp: 1
+                    }
+                ]
+            }
+        });
+    </script>
+    
+</body>
+</html>

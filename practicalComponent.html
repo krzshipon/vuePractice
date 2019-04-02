@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- css -->
+    <link rel="stylesheet" href="style.css">
+    <title>KRZ TODO App</title>
+</head>
+<body>
+    <script src="vue.js"></script>
+
+    <!-- main body for vue -->
+
+    <div id="root">
+        <ul>
+            <li class="active">Tab 1</li>
+            <li>Tab 2</li>
+            <li>Tab 3</li>
+        </ul>
+        <div class="details">
+            <div>Tab1 Content... <button>btn1</button></div>
+            <div>Tab2</div>
+            <div>Tab3</div>
+        </div>
+    </div>
+
+
+
+    <!-- VUE APP SCRIPT -->
+    <script>
+       
+        Vue.component("modal",{
+            template:`
+            <div class="modal">
+				<div class="modalContent">
+					<div class="modalHeader">
+						<slot name="header"></slot>
+					</div>
+					<div class="modalBody">
+						<slot name="body"></slot>
+					</div>
+
+					<div class="modalHeader">
+						<button @click="$emit('onsave')">Save</button>
+						<button>Cancel</button>
+					</div>
+				</div>
+			</div>	
+
+		`,
+            props: ["title","content"],
+            data: function(){
+                return {
+                    show: true
+                }
+            }
+        })
+        var app = new Vue({
+            el: "#root",
+            data: {
+                   showLogin: false
+            }
+            
+                
+
+        });
+    </script>
+
+
+
+
+
+</body>
+</html>

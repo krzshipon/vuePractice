@@ -1,0 +1,87 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- css -->
+    <link rel="stylesheet" href="style.css">
+    <title>KRZ TODO App</title>
+</head>
+<body>
+    <script src="vue.js"></script>
+
+    <!-- main body for vue -->
+
+    <div id="root">
+     <div class="panel">
+        <div class="panelTitle">
+         Simple html 
+        </div>
+        <div class="panelContent">
+            This is a panel content area you can jump and play around here.
+        </div>
+
+        </div>
+
+        <krz-panel title="This is a panel Title by component" content="This is a panel content area you can jump and play around here.">
+            <h1>Enter your name</h1>
+            <input type="text" name="">
+            <button type="submit"></button>
+        </krz-panel>
+
+
+    </div>
+
+
+
+    <!-- VUE APP SCRIPT -->
+    <script>
+       
+        Vue.component("krz-panel",{
+            template:`
+            <div class="panel" v-if="show">
+                <div class="panelTitle">
+                        <div class="close" @click="show = false">x
+                        </div>
+                    {{title}}
+                 </div>
+                <div class="panelContent">
+                    <slot></slot>
+                </div>
+                
+            </div>
+            
+            `,
+            props: ["title","content"],
+            data: function(){
+                return {
+                    show: true
+                }
+            }
+        })
+        var app = new Vue({
+            el: "#root",
+            data: {
+                   name: "Khairuzzaman Shipon",
+                   profession: "Software Engineer",
+                   today: new Date()
+            }
+            
+                
+
+        });
+    </script>
+
+
+
+
+
+</body>
+</html>

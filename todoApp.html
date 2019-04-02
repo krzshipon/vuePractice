@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>KRZ TODO App</title>
+</head>
+<body>
+    <script src="vue.js"></script>
+
+    <!-- main body for vue -->
+
+    <div id="root" class="text-center">
+        <h1 class="text-center">Todos</h1>
+        <br>
+        <ul>
+            <li v-for="(todo,i) in todos">
+                {{todo}} <button @click="deleteTodo(i)">x</button> 
+            </li>
+        </ul>
+        <input type="text" v-model="newTodo">
+        <button @click="addTodo()">Add new todo</button>
+    </div>
+
+
+
+    <!-- VUE APP SCRIPT -->
+    <script>
+        var app = new Vue({
+            el: "#root",
+            data: {
+                newTodo: '',
+                todos: ["Generated todo1", "Generated todo2", "Generated todo3", "Generated todo4", "Generated todo5" ]
+            },
+            methods: {
+                deleteTodo(i){
+                    this.todos.splice(i,1);
+                },
+                addTodo(){
+                    this.todos.push(this.newTodo);
+                    this.newTodo='';
+                }
+            }
+
+
+        });
+    </script>
+
+
+
+
+
+</body>
+</html>
